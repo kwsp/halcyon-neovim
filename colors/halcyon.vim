@@ -41,6 +41,7 @@ endfunction
 
 " Colors
 let s:WORKBENCH = '#171c28'
+let s:BLACK = s:WORKBENCH
 let s:BACKGROUND = '#1d2433'
 let s:FOREGROUND = '#a2aabc'
 let s:UI_GREY = '#6679a4'
@@ -225,7 +226,7 @@ elseif exists('*term_setansicolors')
     \ s:MAGENTA,
     \ s:CYAN,
     \ s:WHITE,
-    \ s:BLACK_br,
+    \ s:BLACK,
     \ s:RED,
     \ s:GREEN,
     \ s:YELLOW,
