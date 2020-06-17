@@ -19,7 +19,7 @@ let g:colors_name = 'halcyon'
 set background=dark
 
 function! s:GuiFor(group, ...)
-  let histring = 'hi ' . a:group . ' '
+  let histring = 'hi ' . a:group . ' ctermfg=NONE ctermbg=NONE cterm=NONE '
 
   if strlen(a:1)
     let histring .= 'guibg=' . a:1 . ' '
@@ -37,9 +37,7 @@ function! s:GuiFor(group, ...)
 endfunction
 "}}}
 
-" Configuration:
-
-" Colors
+" Color Configuration:{{{
 let s:WORKBENCH = '#171c28'
 let s:BLACK = s:WORKBENCH
 let s:BACKGROUND = '#1d2433'
@@ -57,15 +55,12 @@ let s:MAGENTA = s:PURPLE
 let s:WHITE = '#d7dce2'
 let s:LIGHT_GREY = '#8695b7'
 let s:GREY = '#2f3b54'
-let s:DARK_GREY = '#1d2433'
+let s:DARK_GREY = '#1d2433'"}}}
 
 " Default
 call s:GuiFor('Normal', 'NONE', s:FOREGROUND)
 
-" ==================================================
-" Syntax:
-" ==================================================
-
+" --------------------------------------------------
 " Keywords, constants, template literals, purple
 " --------------------------------------------------
 call s:GuiFor("Constant", "NONE", s:PURPLE)
@@ -73,6 +68,7 @@ call s:GuiFor('Keyword', 'NONE', s:PURPLE)
 call s:GuiFor('Number', 'NONE', s:PURPLE)
 call s:GuiFor('Repeat', 'NONE', s:PURPLE)
 call s:GuiFor('Special', 'NONE', s:PURPLE)
+call s:GuiFor('SpecialKey', 'NONE', 'NONE')
 call s:GuiFor('Statement', 'NONE', s:PURPLE, 'NONE')
 call s:GuiFor('Tag', 'NONE', s:PURPLE)
 call s:GuiFor('Type', 'NONE', s:PURPLE, 'NONE')
@@ -112,7 +108,7 @@ call s:GuiFor('CursorLineNR', 'NONE', s:GREEN)
 call s:GuiFor('Debug', 'NONE', s:GREEN)
 call s:GuiFor('Define', 'NONE', s:GREEN)
 call s:GuiFor('Delimiter', 'NONE', s:GREEN)
-call s:GuiFor('DiffChange', 'NONE', s:GREEN)
+call s:GuiFor('DiffChange', 'NONE', s:GREEN, 'NONE')
 call s:GuiFor('GREENing', 'NONE', s:GREEN)
 call s:GuiFor('Label', 'NONE', s:GREEN)
 call s:GuiFor('MatchParen', 'NONE', s:GREEN)
@@ -127,6 +123,7 @@ call s:GuiFor('GitGutterChange', 'NONE', s:GREEN)
 " --------------------------------------------------
 call s:GuiFor('Identifier ', 'NONE', s:BLUE)
 call s:GuiFor('SpecialChar', 'NONE', s:BLUE)
+call s:GuiFor('DiffAdd', 'NONE', s:BLUE, 'NONE')
 
 call s:GuiFor('cssBorderProp', 'NONE', s:BLUE)
 call s:GuiFor('cssBoxProp', 'NONE', s:BLUE)
@@ -141,6 +138,8 @@ call s:GuiFor('cssTagName', 'NONE', s:BLUE)
 call s:GuiFor('cssTextProp', 'NONE', s:BLUE)
 call s:GuiFor('cssUIProp', 'NONE', s:BLUE)
 
+call s:GuiFor('Conceal', 'NONE', s:BLUE, 'NONE')
+
 " --------------------------------------------------
 " Status bar text, buttons, etc, grey
 " --------------------------------------------------
@@ -148,40 +147,47 @@ call s:GuiFor('Comment', 'NONE', s:LIGHT_GREY, "italic")
 call s:GuiFor('NonText', 'NONE', s:LIGHT_GREY)
 call s:GuiFor('SpecialComment', 'NONE', s:LIGHT_GREY)
 call s:GuiFor('LineNr', 'NONE', s:GREY)
+call s:GuiFor('StatusLine', 'NONE', s:FOREGROUND, 'NONE')
+call s:GuiFor('StatusLineNC', s:FOREGROUND, 'NONE')
 
 " --------------------------------------------------
 " Deletion highlights, errors, warnings, red
 " --------------------------------------------------
-call s:GuiFor('DiffREDete', 'NONE', s:RED)
-call s:GuiFor('DiffText', 'NONE', s:RED)
+call s:GuiFor('DiffDelete', 'NONE', s:RED, 'NONE')
+call s:GuiFor('DiffText', 'NONE', s:RED, 'NONE')
 call s:GuiFor('Error', 'NONE', s:RED)
 call s:GuiFor('ErrorMsg', 'NONE', s:RED)
 call s:GuiFor('GitGutterChangeREDete', 'NONE', s:RED)
 call s:GuiFor('GitGutterREDete', 'NONE', s:RED)
 call s:GuiFor('WarningMsg', 'NONE', s:RED)
+call s:GuiFor('Question', 'NONE', s:RED, 'NONE')
 
 " --------------------------------------------------
 " Modified highlights (mod) cyan
 " --------------------------------------------------
-"hi SignColumn guibg=#1d2433
-"hi CursorLine guibg=#FFFFFF
-"hi StatusLine gui=bold guibg=#454545 guifg=#d7dce2
-"hi StatusLineNC gui=NONE guibg=#1d2433 guifg=#d7dce2
+call s:GuiFor('SignColumn ', 'NONE', s:CYAN, 'NONE')
+call s:GuiFor('CursorLine ', 'NONE', s:CYAN, 'NONE')
 
 " --------------------------------------------------
 " Complex
 " --------------------------------------------------
 call s:GuiFor('Visual', s:GREY, 'NONE')
-
-call s:GuiFor('VertSplit', 'NONE', 'NONE', 'NONE')
+call s:GuiFor('VertSplit', 'NONE', s:BACKGROUND, 'NONE')
+call s:GuiFor('EndOfBuffer', 'NONE', s:BACKGROUND, 'NONE')
 
 call s:GuiFor('Pmenu', s:BACKGROUND, s:FOREGROUND)
 call s:GuiFor('PMenuSel', 'NONE', s:ORANGE)
 "call s:GuiFor('PMenuSbar', 'NONE', s:ORANGE)
 "call s:GuiFor('PMenuThumb', 'NONE', s:ORANGE)
 
-call s:GuiFor('TabLine', s:BACKGROUND, s:LIGHT_GREY)
-call s:GuiFor('TabLineFill', s:BACKGROUND, 'NONE')
+call s:GuiFor('WildMenu', s:CYAN, s:BACKGROUND)
+
+call s:GuiFor('TabLine', 'NONE', s:FOREGROUND, 'NONE')
+call s:GuiFor('TabLineFill', 'NONE', 'NONE', 'NONE')
+call s:GuiFor('TabLineSel', s:BACKGROUND, s:FOREGROUND, 'NONE')
+
+call s:GuiFor('Folded', s:WORKBENCH, s:FOREGROUND)
+call s:GuiFor('FoldColumn', 'NONE', s:FOREGROUND)
 
 call s:GuiFor('GitGutterAdd', 'NONE', s:PURPLE)
 
@@ -192,6 +198,7 @@ call s:GuiFor('Search', s:GREY, 'NONE')
 " ==================================================
 " Built-in Terminal
 " --------------------------------------------------
+call s:GuiFor('Terminal', 'NONE', s:FOREGROUND)
 if has('nvim')
   let g:terminal_color_0 = s:WORKBENCH
   let g:terminal_color_8 = s:BACKGROUND
