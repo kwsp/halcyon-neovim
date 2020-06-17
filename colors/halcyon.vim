@@ -1,6 +1,5 @@
 " -----------------------------------------------------------------------------
 " Name:           Halcyon Theme
-" Description:    Halcyon Colour Theme
 " Author:         Tiger Nie <nhl0819@gmail.com>
 " Website:        https://github.com/tiega/halcyon.vim
 " License:        MIT
