@@ -273,6 +273,7 @@ call s:GuiFor('htmlEvent', 'NONE', s:ORANGE)
 " --------------------------------------------------
 
 call s:GuiFor('pythonString', 'NONE', s:GREEN)
+call s:GuiFor('pythonFString', 'NONE', s:GREEN)
 call s:GuiFor('pythonRawString', 'NONE', s:GREEN)
 
 " --------------------------------------------------
