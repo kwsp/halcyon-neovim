@@ -2,7 +2,7 @@
 
 A minimal, dark blue theme for Neovim and [lightline.vim](https://github.com/itchyny/lightline.vim), ported from [halcyon-vscode](https://github.com/bchiang7/halcyon-vscode/). Due to limitations in vim's syntax highlighting (even with additional plugins), it's impossible to replicate @bchiang7's original theme. This is mostly meant to be used under iTerm2 with the [halcyon-iterm](https://github.com/bchiang7/halcyon-iterm) theme, but without the iTerm2 theme it's still a decent Neovim theme by itself if you have a terminal with 256 colour support. Note that this theme does not support Vim.
 
-![demo](https://github.com/NieTiger/halcyon-assets/raw/master/halcyon-vim.png)
+![demo](https://github.com/kwsp/halcyon-assets/raw/master/halcyon-vim.png)
 
 ## Language Support 
 
@@ -13,7 +13,7 @@ Languages I've tweaked this theme with: C, JavaScript, TypeScript, Golang, Pytho
 Using [vim-plug](https://github.com/junegunn/vim-plug). It's very important that you have `set termguicolors` in the init file or the colours won't render properly.
 
 ```vim
-Plug 'NieTiger/halcyon-neovim'
+Plug 'kwsp/halcyon-neovim'
 colorscheme halcyon
 set termguicolors
 ```
