@@ -235,6 +235,7 @@ call s:GuiFor('htmlString', 'NONE', s:GREEN)
 call s:GuiFor('htmlTagName', 'NONE', s:CYAN)
 call s:GuiFor('htmlTag', 'NONE', s:FOREGROUND)
 call s:GuiFor('htmlTagEndTag', 'NONE', s:FOREGROUND)
+call s:GuiFor('htmlEvent', 'NONE', s:ORANGE)
 
 " --------------------------------------------------
 " Python 'vim-python/python-syntax'
