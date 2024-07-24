@@ -1,7 +1,7 @@
 " -----------------------------------------------------------------------------
 " Name:           Halcyon Theme
 " Author:         Tiger Nie <nhl0819@gmail.com>
-" Website:        https://github.com/tiega/halcyon.vim
+" Website:        https://github.com/NieTiger/halcyon.vim
 " License:        MIT
 " ----------------------------------------------------------------------------- 
 " Initialisation: {{{
@@ -73,9 +73,6 @@ call s:GuiFor('Tag', 'NONE', s:PURPLE)
 call s:GuiFor('Type', 'NONE', s:PURPLE, 'NONE')
 call s:GuiFor('Typedef', 'NONE', s:PURPLE, 'NONE')
 
-call s:GuiFor('cssAttr', 'NONE', s:PURPLE)
-call s:GuiFor('cssIncludeKeyword ', 'NONE', s:PURPLE)
-
 " --------------------------------------------------
 " Functions, classes, object literal keys, yellow
 " --------------------------------------------------
@@ -83,8 +80,6 @@ call s:GuiFor('Directory', 'NONE', s:YELLOW)
 call s:GuiFor('Function', 'NONE', s:YELLOW)
 call s:GuiFor('PreProc', 'NONE', s:YELLOW)
 call s:GuiFor('StorageClass', 'NONE', s:YELLOW)
-
-call s:GuiFor('markdownLinkText', 'NONE', s:YELLOW)
 
 " --------------------------------------------------
 " Constants, operators, orange
@@ -96,10 +91,6 @@ call s:GuiFor('Macro', 'NONE', s:ORANGE)
 call s:GuiFor('Operator', 'NONE', s:ORANGE)
 call s:GuiFor('PreCondit', 'NONE', s:ORANGE)
 
-call s:GuiFor('cssClassName', 'NONE', s:ORANGE)
-call s:GuiFor('cssClassNameDot', 'NONE', s:ORANGE)
-call s:GuiFor('cssColor', 'NONE', s:ORANGE)
-
 " --------------------------------------------------
 " Strings, markdown headings, green
 " --------------------------------------------------
@@ -110,12 +101,13 @@ call s:GuiFor('Delimiter', 'NONE', s:GREEN)
 call s:GuiFor('DiffChange', 'NONE', s:GREEN, 'NONE')
 call s:GuiFor('GREENing', 'NONE', s:GREEN)
 call s:GuiFor('Label', 'NONE', s:GREEN)
-call s:GuiFor('MatchParen', 'NONE', s:GREEN)
 call s:GuiFor('MoreMsg', 'NONE', s:GREEN)
 call s:GuiFor('Title', 'NONE', s:GREEN, 'NONE')
 call s:GuiFor('Todo', 'NONE', s:GREEN)
 
 call s:GuiFor('GitGutterChange', 'NONE', s:GREEN)
+
+call s:GuiFor('MatchParen', s:ORANGE, s:ORANGE)
 
 " --------------------------------------------------
 " Special keywords, classes, markdown code blocks, blue
@@ -123,19 +115,6 @@ call s:GuiFor('GitGutterChange', 'NONE', s:GREEN)
 call s:GuiFor('Identifier ', 'NONE', s:BLUE)
 call s:GuiFor('SpecialChar', 'NONE', s:BLUE)
 call s:GuiFor('DiffAdd', 'NONE', s:BLUE, 'NONE')
-
-call s:GuiFor('cssBorderProp', 'NONE', s:BLUE)
-call s:GuiFor('cssBoxProp', 'NONE', s:BLUE)
-call s:GuiFor('cssBraces', 'NONE', s:BLUE)
-call s:GuiFor('cssFlexibleBoxProp', 'NONE', s:BLUE)
-call s:GuiFor('cssFontProp', 'NONE', s:BLUE)
-call s:GuiFor('cssIdentifier ', 'NONE', s:BLUE)
-call s:GuiFor('cssImportant', 'NONE', s:BLUE)
-call s:GuiFor('cssMediaProp', 'NONE', s:BLUE)
-call s:GuiFor('cssPositioningProp', 'NONE', s:BLUE)
-call s:GuiFor('cssTagName', 'NONE', s:BLUE)
-call s:GuiFor('cssTextProp', 'NONE', s:BLUE)
-call s:GuiFor('cssUIProp', 'NONE', s:BLUE)
 
 call s:GuiFor('Conceal', 'NONE', s:BLUE, 'NONE')
 
@@ -193,6 +172,113 @@ call s:GuiFor('GitGutterAdd', 'NONE', s:PURPLE)
 call s:GuiFor('IncSearch', 'NONE', s:FOREGROUND)
 call s:GuiFor('Search', s:GREY, 'NONE')
 
+" --------------------------------------------------
+" sh
+" --------------------------------------------------
+
+call s:GuiFor('shDoubleQuote', 'NONE', s:GREEN)
+call s:GuiFor('shCommandSubBQ', 'NONE', s:GREEN)
+call s:GuiFor('shQuote', 'NONE', s:GREEN)
+
+" --------------------------------------------------
+" JavaScript 'pangloss/vim-javascript'
+" --------------------------------------------------
+
+call s:GuiFor('jsVariableDef', 'NONE', s:CYAN)
+call s:GuiFor('jsGlobalObjects', 'NONE', s:CYAN)
+call s:GuiFor('jsStorageClass', 'NONE', s:PURPLE)
+call s:GuiFor('jsTemplateString', 'NONE', s:GREEN)
+call s:GuiFor('jsString', 'NONE', s:GREEN)
+call s:GuiFor('jsForAwait', 'NONE', s:ORANGE)
+call s:GuiFor('jsDot', 'NONE', s:ORANGE)
+
+" --------------------------------------------------
+" CSS
+" --------------------------------------------------
+
+call s:GuiFor('cssClassName', 'NONE', s:ORANGE)
+call s:GuiFor('cssClassNameDot', 'NONE', s:ORANGE)
+call s:GuiFor('cssColor', 'NONE', s:ORANGE)
+call s:GuiFor('cssBorderProp', 'NONE', s:BLUE)
+call s:GuiFor('cssBoxProp', 'NONE', s:BLUE)
+call s:GuiFor('cssBackgroundProp', 'NONE', s:ORANGE)
+call s:GuiFor('cssPseudoClassId', 'NONE', s:ORANGE)
+call s:GuiFor('cssBraces', 'NONE', s:FOREGROUND)
+call s:GuiFor('cssFlexibleBoxProp', 'NONE', s:BLUE)
+call s:GuiFor('cssFontProp', 'NONE', s:BLUE)
+call s:GuiFor('cssIdentifier ', 'NONE', s:BLUE)
+call s:GuiFor('cssImportant', 'NONE', s:BLUE)
+call s:GuiFor('cssMediaProp', 'NONE', s:BLUE)
+call s:GuiFor('cssPositioningProp', 'NONE', s:BLUE)
+call s:GuiFor('cssTagName', 'NONE', s:BLUE)
+call s:GuiFor('cssTextProp', 'NONE', s:BLUE)
+call s:GuiFor('cssUIProp', 'NONE', s:BLUE)
+call s:GuiFor('cssAttr', 'NONE', s:PURPLE)
+call s:GuiFor('cssIncludeKeyword ', 'NONE', s:PURPLE)
+call s:GuiFor('cssUnitDecorators', 'NONE', s:PURPLE)
+call s:GuiFor('cssStringQ', 'NONE', s:GREEN)
+call s:GuiFor('cssStringQQ', 'NONE', s:GREEN)
+
+" --------------------------------------------------
+" SCSS
+" --------------------------------------------------
+
+call s:GuiFor('sassVariable', 'NONE', s:FOREGROUND)
+call s:GuiFor('sassClass', 'NONE', s:ORANGE)
+
+" --------------------------------------------------
+" HTML
+" --------------------------------------------------
+
+call s:GuiFor('htmlArg', 'NONE', s:ORANGE)
+call s:GuiFor('htmlString', 'NONE', s:GREEN)
+call s:GuiFor('htmlTagName', 'NONE', s:CYAN)
+call s:GuiFor('htmlTag', 'NONE', s:FOREGROUND)
+call s:GuiFor('htmlTagEndTag', 'NONE', s:FOREGROUND)
+
+" --------------------------------------------------
+" Python 'vim-python/python-syntax'
+" --------------------------------------------------
+
+call s:GuiFor('pythonString', 'NONE', s:GREEN)
+call s:GuiFor('pythonRawString', 'NONE', s:GREEN)
+
+" --------------------------------------------------
+" C
+" --------------------------------------------------
+
+call s:GuiFor('cStatement', 'NONE', s:ORANGE)
+call s:GuiFor('cIncluded', 'NONE', s:GREEN)
+call s:GuiFor('cString', 'NONE', s:GREEN)
+
+" --------------------------------------------------
+" Golang 'fatih/vim-go'
+" --------------------------------------------------
+
+call s:GuiFor('goString', 'NONE', s:GREEN)
+call s:GuiFor('goStatement', 'NONE', s:ORANGE)
+call s:GuiFor('goBuiltins', 'NONE', s:YELLOW)
+
+" --------------------------------------------------
+" YAML
+" --------------------------------------------------
+
+call s:GuiFor('yamlFlowString', 'NONE', s:GREEN)
+call s:GuiFor('yamlFlowStringDelimiter', 'NONE', s:GREEN)
+
+" --------------------------------------------------
+" Markdown
+" --------------------------------------------------
+
+call s:GuiFor('mkdHeading', 'NONE', s:GREEN)
+call s:GuiFor('mkdCode', 'NONE', s:CYAN)
+call s:GuiFor('mkdCodeDelimiter', 'NONE', s:CYAN)
+call s:GuiFor('mkdCodeStart', 'NONE', s:CYAN)
+call s:GuiFor('mkdCodeEnd', 'NONE', s:CYAN)
+call s:GuiFor('mkdLink', 'NONE', s:YELLOW)
+call s:GuiFor('mkdURL', 'NONE', s:PURPLE)
+
+call s:GuiFor('markdownLinkText', 'NONE', s:YELLOW)
 
 " ==================================================
 " Built-in Terminal
