@@ -107,7 +107,7 @@ call s:GuiFor('Todo', 'NONE', s:GREEN)
 
 call s:GuiFor('GitGutterChange', 'NONE', s:GREEN)
 
-call s:GuiFor('MatchParen', s:ORANGE, s:ORANGE)
+call s:GuiFor('MatchParen', s:ORANGE, s:FOREGROUND)
 
 " --------------------------------------------------
 " Special keywords, classes, markdown code blocks, blue
@@ -117,6 +117,7 @@ call s:GuiFor('SpecialChar', 'NONE', s:BLUE)
 call s:GuiFor('DiffAdd', 'NONE', s:BLUE, 'NONE')
 
 call s:GuiFor('Conceal', 'NONE', s:BLUE, 'NONE')
+call s:GuiFor('lispKey', 'NONE', s:BLUE)
 
 " --------------------------------------------------
 " Status bar text, buttons, etc, grey
@@ -191,6 +192,36 @@ call s:GuiFor('jsTemplateString', 'NONE', s:GREEN)
 call s:GuiFor('jsString', 'NONE', s:GREEN)
 call s:GuiFor('jsForAwait', 'NONE', s:ORANGE)
 call s:GuiFor('jsDot', 'NONE', s:ORANGE)
+
+" --------------------------------------------------
+" Typescript 
+" --------------------------------------------------
+
+call s:GuiFor('typescriptRegexpString', 'NONE', s:GREEN)
+call s:GuiFor('typescriptString', 'NONE', s:GREEN)
+
+call s:GuiFor('typescriptStatementKeyword', 'NONE', s:ORANGE)
+call s:GuiFor('typescriptBinaryOp', 'NONE', s:ORANGE)
+call s:GuiFor('typescriptDotNotation', 'NONE', s:ORANGE)
+call s:GuiFor('typescriptAssign', 'NONE', s:ORANGE)
+
+call s:GuiFor('typescriptVariableDeclaration', 'NONE', s:CYAN)
+call s:GuiFor('typescriptPredefinedType', 'NONE', s:CYAN)
+call s:GuiFor('typescriptObjectLabel', 'NONE', s:YELLOW)
+
+call s:GuiFor('typescriptTypeReference', 'NONE', s:YELLOW)
+call s:GuiFor('typescriptPromiseMethod', 'NONE', s:YELLOW)
+call s:GuiFor('typescriptGlobalMethod', 'NONE', s:YELLOW)
+call s:GuiFor('typescriptInterfaceName', 'NONE', s:YELLOW)
+call s:GuiFor('typescriptClassName', 'NONE', s:YELLOW)
+call s:GuiFor('typescriptProp', 'NONE', s:YELLOW)
+
+call s:GuiFor('typescriptIdentifierName', 'NONE', s:FOREGROUND)
+call s:GuiFor('typescriptArrowFuncArg', 'NONE', s:FOREGROUND)
+call s:GuiFor('typescriptCall', 'NONE', s:FOREGROUND)
+call s:GuiFor('typescriptMember', 'NONE', s:FOREGROUND)
+
+call s:GuiFor('typescriptVariable', 'NONE', s:PURPLE)
 
 " --------------------------------------------------
 " CSS
