@@ -8,3 +8,7 @@ dev:
 clean:
 	echo "Removing symlink from ~/.vim/plugged"
 	rm ~/.vim/plugged/halcyon.vim
+
+fclean:
+	echo "Removing ~/.vim/plugged/halcyon.vim"
+	rm -rf ~/.vim/plugged/halcyon.vim
