@@ -95,7 +95,7 @@ call s:GuiFor('PreCondit', 'NONE', s:ORANGE)
 " Strings, markdown headings, green
 " --------------------------------------------------
 call s:GuiFor('String', 'NONE', s:GREEN)
-call s:GuiFor('CursorLineNR', 'NONE', s:GREEN)
+call s:GuiFor('CursorLineNr', 'NONE', s:GREEN)
 call s:GuiFor('Debug', 'NONE', s:GREEN)
 call s:GuiFor('Define', 'NONE', s:GREEN)
 call s:GuiFor('Delimiter', 'NONE', s:GREEN)
@@ -124,8 +124,8 @@ call s:GuiFor('lispKey', 'NONE', s:BLUE)
 " Status bar text, buttons, etc, grey
 " --------------------------------------------------
 call s:GuiFor('Comment', 'NONE', s:LIGHT_GREY, "italic")
-call s:GuiFor('NonText', 'NONE', s:LIGHT_GREY)
-call s:GuiFor('SpecialComment', 'NONE', s:LIGHT_GREY)
+call s:GuiFor('NonText', 'NONE', s:GREY)
+"call s:GuiFor('SpecialComment', 'NONE', s:LIGHT_GREY)
 call s:GuiFor('LineNr', 'NONE', s:GREY)
 call s:GuiFor('StatusLine', '', '', 'reverse')
 call s:GuiFor('StatusLineNC', '', '', 'reverse')
@@ -153,7 +153,6 @@ call s:GuiFor('CursorLine ', 'NONE', s:CYAN, 'NONE')
 " --------------------------------------------------
 call s:GuiFor('Visual', s:GREY, 'NONE')
 call s:GuiFor('VertSplit', s:GREY, s:BACKGROUND)
-call s:GuiFor('EndOfBuffer', '', '', '')
 
 call s:GuiFor('Pmenu', s:BACKGROUND, s:FOREGROUND)
 call s:GuiFor('PMenuSel', 'NONE', s:ORANGE)
@@ -275,14 +274,13 @@ call s:GuiFor('htmlEvent', 'NONE', s:ORANGE)
 "call s:GuiFor('pythonString', 'NONE', s:GREEN)
 "call s:GuiFor('pythonFString', 'NONE', s:GREEN)
 "call s:GuiFor('pythonRawString', 'NONE', s:GREEN)
+"call s:GuiFor('pythonComment', 'NONE', s:LIGHT_GREY, 'italic')
 
 " --------------------------------------------------
 " C
 " --------------------------------------------------
 
 call s:GuiFor('cStatement', 'NONE', s:ORANGE)
-call s:GuiFor('cIncluded', 'NONE', s:GREEN)
-call s:GuiFor('cString', 'NONE', s:GREEN)
 
 " --------------------------------------------------
 " Golang 'fatih/vim-go'
