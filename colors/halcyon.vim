@@ -1,7 +1,7 @@
 " -----------------------------------------------------------------------------
 " Name:           Halcyon Theme
 " Author:         Tiger Nie <nhl0819@gmail.com>
-" Website:        https://github.com/NieTiger/halcyon.vim
+" Website:        https://github.com/NieTiger/halcyon-neovim
 " License:        MIT
 " ----------------------------------------------------------------------------- 
 " Initialisation: {{{
