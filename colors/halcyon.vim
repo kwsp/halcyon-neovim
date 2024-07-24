@@ -4,7 +4,8 @@
 " Website:        https://github.com/NieTiger/halcyon-neovim
 " License:        MIT
 " ----------------------------------------------------------------------------- 
-" Initialisation: {{{
+
+" Initialisation
 if !(has('termguicolors') && &termguicolors) && !has('gui_running') && &t_Co != 256
   finish
 endif
@@ -16,7 +17,9 @@ endif
 
 let g:colors_name = 'halcyon'
 set background=dark
+set cursorline
 
+" GuiFor(group, foreground, background, attr-list)
 function! s:GuiFor(group, ...)
   let histring = 'hi ' . a:group . ' ctermfg=NONE ctermbg=NONE cterm=NONE '
 
@@ -34,9 +37,8 @@ function! s:GuiFor(group, ...)
 
   execute histring
 endfunction
-"}}}
 
-" Color Configuration:{{{
+" Color Configuration
 let s:WORKBENCH = '#171c28'
 let s:BLACK = s:WORKBENCH
 let s:BACKGROUND = '#1d2433'
@@ -54,7 +56,7 @@ let s:MAGENTA = s:PURPLE
 let s:WHITE = '#d7dce2'
 let s:LIGHT_GREY = '#8695b7'
 let s:GREY = '#2f3b54'
-let s:DARK_GREY = '#1d2433'"}}}
+let s:DARK_GREY = '#1d2433'
 
 " Default
 call s:GuiFor('Normal', 'NONE', s:FOREGROUND)
@@ -67,11 +69,11 @@ call s:GuiFor('Keyword', 'NONE', s:PURPLE)
 call s:GuiFor('Number', 'NONE', s:PURPLE)
 call s:GuiFor('Repeat', 'NONE', s:PURPLE)
 call s:GuiFor('Special', 'NONE', s:PURPLE)
-call s:GuiFor('SpecialKey', 'NONE', s:CYAN)
-call s:GuiFor('Statement', 'NONE', s:PURPLE, 'NONE')
+call s:GuiFor('SpecialKey', 'NONE', s:PURPLE)
+call s:GuiFor('Statement', 'NONE', s:PURPLE)
 call s:GuiFor('Tag', 'NONE', s:PURPLE)
-call s:GuiFor('Type', 'NONE', s:PURPLE, 'NONE')
-call s:GuiFor('Typedef', 'NONE', s:PURPLE, 'NONE')
+call s:GuiFor('Type', 'NONE', s:YELLOW, 'NONE')
+call s:GuiFor('Typedef', 'NONE', s:PURPLE)
 
 " --------------------------------------------------
 " Functions, classes, object literal keys, yellow
@@ -87,6 +89,7 @@ call s:GuiFor('StorageClass', 'NONE', s:YELLOW)
 call s:GuiFor('Conditional', 'NONE', s:ORANGE)
 call s:GuiFor('Exception', 'NONE', s:ORANGE)
 call s:GuiFor('Include', 'NONE', s:ORANGE)
+call s:GuiFor('Define', 'NONE', s:ORANGE)
 call s:GuiFor('Macro', 'NONE', s:ORANGE)
 call s:GuiFor('Operator', 'NONE', s:ORANGE)
 call s:GuiFor('PreCondit', 'NONE', s:ORANGE)
@@ -95,12 +98,9 @@ call s:GuiFor('PreCondit', 'NONE', s:ORANGE)
 " Strings, markdown headings, green
 " --------------------------------------------------
 call s:GuiFor('String', 'NONE', s:GREEN)
-call s:GuiFor('CursorLineNr', 'NONE', s:GREEN)
 call s:GuiFor('Debug', 'NONE', s:GREEN)
-call s:GuiFor('Define', 'NONE', s:GREEN)
 call s:GuiFor('Delimiter', 'NONE', s:GREEN)
 call s:GuiFor('DiffChange', 'NONE', s:GREEN, 'NONE')
-call s:GuiFor('GREENing', 'NONE', s:GREEN)
 call s:GuiFor('Label', 'NONE', s:GREEN)
 call s:GuiFor('MoreMsg', 'NONE', s:GREEN)
 call s:GuiFor('Title', 'NONE', s:GREEN, 'NONE')
@@ -108,14 +108,14 @@ call s:GuiFor('Todo', 'NONE', s:GREEN)
 
 call s:GuiFor('GitGutterChange', 'NONE', s:GREEN)
 
-call s:GuiFor('MatchParen', s:ORANGE, s:FOREGROUND)
+call s:GuiFor('MatchParen', s:ORANGE, s:BACKGROUND)
 
 " --------------------------------------------------
 " Special keywords, classes, markdown code blocks, blue
 " --------------------------------------------------
-call s:GuiFor('Identifier ', 'NONE', s:BLUE)
+call s:GuiFor('Identifier ', 'NONE', s:FOREGROUND)
 call s:GuiFor('SpecialChar', 'NONE', s:BLUE)
-call s:GuiFor('DiffAdd', 'NONE', s:BLUE, 'NONE')
+call s:GuiFor('DiffAdd', 'NONE', s:BLUE)
 
 call s:GuiFor('Conceal', 'NONE', s:BLUE, 'NONE')
 call s:GuiFor('lispKey', 'NONE', s:BLUE)
@@ -125,7 +125,6 @@ call s:GuiFor('lispKey', 'NONE', s:BLUE)
 " --------------------------------------------------
 call s:GuiFor('Comment', 'NONE', s:LIGHT_GREY, "italic")
 call s:GuiFor('NonText', 'NONE', s:GREY)
-"call s:GuiFor('SpecialComment', 'NONE', s:LIGHT_GREY)
 call s:GuiFor('LineNr', 'NONE', s:GREY)
 call s:GuiFor('StatusLine', '', '', 'reverse')
 call s:GuiFor('StatusLineNC', '', '', 'reverse')
@@ -145,19 +144,22 @@ call s:GuiFor('Question', 'NONE', s:RED, 'NONE')
 " --------------------------------------------------
 " Modified highlights (mod) cyan
 " --------------------------------------------------
-call s:GuiFor('SignColumn ', 'NONE', s:CYAN, 'NONE')
-call s:GuiFor('CursorLine ', 'NONE', s:CYAN, 'NONE')
+call s:GuiFor('SignColumn ', 'NONE', s:CYAN)
+call s:GuiFor('Cursor ', 'NONE', s:BACKGROUND)
+call s:GuiFor('lCursor ', 'NONE', s:BACKGROUND)
+call s:GuiFor('CursorLine ', s:GREY)
+call s:GuiFor('CursorLineNr', 'NONE', s:LIGHT_GREY)
 
 " --------------------------------------------------
 " Complex
 " --------------------------------------------------
-call s:GuiFor('Visual', s:GREY, 'NONE')
+call s:GuiFor('Visual', s:GREY)
 call s:GuiFor('VertSplit', s:GREY, s:BACKGROUND)
 
-call s:GuiFor('Pmenu', s:BACKGROUND, s:FOREGROUND)
-call s:GuiFor('PMenuSel', 'NONE', s:ORANGE)
-"call s:GuiFor('PMenuSbar', 'NONE', s:ORANGE)
-"call s:GuiFor('PMenuThumb', 'NONE', s:ORANGE)
+call s:GuiFor('Pmenu', s:GREY, s:FOREGROUND)
+call s:GuiFor('PmenuSbar', s:GREY)
+call s:GuiFor('PmenuSel', 'NONE', s:WHITE)
+call s:GuiFor('PmenuThumb', s:LIGHT_GREY, s:ORANGE)
 
 call s:GuiFor('WildMenu', s:CYAN, s:BACKGROUND)
 
@@ -170,7 +172,7 @@ call s:GuiFor('FoldColumn', 'NONE', s:FOREGROUND)
 
 call s:GuiFor('GitGutterAdd', 'NONE', s:PURPLE)
 
-call s:GuiFor('IncSearch', 'NONE', s:FOREGROUND)
+call s:GuiFor('IncSearch', s:GREY, 'NONE')
 call s:GuiFor('Search', s:GREY, 'NONE')
 
 " --------------------------------------------------
@@ -267,14 +269,6 @@ call s:GuiFor('htmlTag', 'NONE', s:FOREGROUND)
 call s:GuiFor('htmlTagEndTag', 'NONE', s:FOREGROUND)
 call s:GuiFor('htmlEvent', 'NONE', s:ORANGE)
 
-" --------------------------------------------------
-" Python 'vim-python/python-syntax'
-" --------------------------------------------------
-
-"call s:GuiFor('pythonString', 'NONE', s:GREEN)
-"call s:GuiFor('pythonFString', 'NONE', s:GREEN)
-"call s:GuiFor('pythonRawString', 'NONE', s:GREEN)
-"call s:GuiFor('pythonComment', 'NONE', s:LIGHT_GREY, 'italic')
 
 " --------------------------------------------------
 " C
@@ -316,6 +310,55 @@ call s:GuiFor('markdownLinkText', 'NONE', s:YELLOW)
 
 call s:GuiFor('CocFloating', s:GREY)
 
+" --------------------------------------------------
+" TS
+" --------------------------------------------------
+
+"call s:GuiFor('TSAttribute', 'NONE', s:YELLOW)
+call s:GuiFor('TSBoolean', 'NONE', s:PURPLE)
+call s:GuiFor('TSConditional', 'NONE', s:ORANGE)
+
+
+call s:GuiFor('TSKeyword', 'NONE', s:PURPLE)
+call s:GuiFor('TSKeywordFunction', 'NONE', s:PURPLE)
+call s:GuiFor('TSKeywordOperator', 'NONE', s:ORANGE)
+call s:GuiFor('TSKeywordReturn', 'NONE', s:ORANGE)
+
+call s:GuiFor('TSMethod', 'NONE', s:YELLOW)
+call s:GuiFor('TSNamespace', 'NONE', s:YELLOW)
+call s:GuiFor('TSConstructor', 'NONE', s:YELLOW)
+
+call s:GuiFor('TSFunction', 'NONE', s:YELLOW)
+call s:GuiFor('TSFuncBuiltin', 'NONE', s:YELLOW)
+
+call s:GuiFor('TSPunctDelimiter', 'NONE', s:FOREGROUND)
+call s:GuiFor('javascriptTSPunctDelimiter', 'NONE', s:FOREGROUND)
+call s:GuiFor('typescriptTSPunctDelimiter', 'NONE', s:FOREGROUND)
+call s:GuiFor('TSPunctBracket', 'NONE', s:FOREGROUND)
+
+call s:GuiFor('TSTag', 'NONE', s:CYAN)
+call s:GuiFor('TSTagDelimiter', 'NONE', s:FOREGROUND)
+call s:GuiFor('TSTagAttribute', 'NONE', s:ORANGE)
+
+call s:GuiFor('TSType', 'NONE', s:YELLOW)
+call s:GuiFor('TSTypeBuiltin', 'NONE', s:CYAN)
+
+call s:GuiFor('TSProperty', 'NONE', s:CYAN)
+call s:GuiFor('javascriptTSProperty', 'NONE', s:FOREGROUND)
+call s:GuiFor('sassProperty', 'NONE', s:CYAN)
+
+call s:GuiFor('TSString', 'NONE', s:GREEN)
+call s:GuiFor('TSStringRegex', 'NONE', s:GREEN)
+call s:GuiFor('TSStringEscape', 'NONE', s:CYAN)
+call s:GuiFor('TSStringSpecial', 'NONE', s:ORANGE)
+
+call s:GuiFor('TSVariable', 'NONE', s:FOREGROUND)
+call s:GuiFor('TSVariableBuiltin', 'NONE', s:CYAN, 'italic')
+
+call s:GuiFor('python_decorator', 'NONE', s:CYAN)
+
+call s:GuiFor('javascriptTSVariable', 'NONE', s:CYAN)
+call s:GuiFor('typescriptTSVariable', 'NONE', s:CYAN)
 
 " ==================================================
 " Built-in Terminal

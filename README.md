@@ -1,12 +1,12 @@
 # Halcyon Theme for Neovim
 
-A minimal, dark blue theme for Neovim and [lightline.vim](https://github.com/itchyny/lightline.vim), ported from [halcyon-vscode](https://github.com/bchiang7/halcyon-vscode/). Due to limitations in vim's syntax highlighting (even with additional plugins), it's impossible to replicate @bchiang7's original theme. This is mostly meant to be used under iTerm2 with the [halcyon-iterm](https://github.com/bchiang7/halcyon-iterm) theme, but without the iTerm2 theme it's still a decent Neovim theme by itself if you have a terminal with 256 colour support. Note that this theme does not support Vim.
+A minimal, dark blue theme for Neovim and [lightline.vim](https://github.com/itchyny/lightline.vim), ported from [halcyon-vscode](https://github.com/bchiang7/halcyon-vscode/).
+
+This theme works best under the [halcyon-iterm](https://github.com/bchiang7/halcyon-iterm) iTerm2 theme, but without that it's still a decent Neovim theme by itself if you have a terminal with 256 colour support. Note that this theme does not support Vim. Works well with [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter).
 
 ![demo](https://github.com/kwsp/halcyon-assets/raw/master/halcyon-vim.png)
 
-## Language Support 
-
-Languages I've tweaked this theme with: C, JavaScript, TypeScript, Golang, Python, Common Lisp, HTML, CSS, Scss, Markdown, YAML and Bash. In particular, JavaScript support requires `Plug 'pangloss/vim-javascript'`, Python support requires `Plug 'vim-python/python-syntax'`, HTML and Markdown support requires `Plug 'plasticboy/vim-markdown'` and Golang support requires `Plug 'fatih/vim-go'`. If you find a better syntax plugin for a particular language, feel free to ping me or send a PR.
+## Language Support
 
 ## Installation
 
@@ -40,7 +40,7 @@ This theme supports transparent terminals out of the box (most of the background
 
 If you are using a terminal without opacity, setting the background colour to `#1d2433` can make a big difference.
 
-## 
+##
 
 ### References
 
