@@ -1,8 +1,10 @@
-
-
-" ==================================================
-" Lightline
-"" --------------------------------------------------
+" -----------------------------------------------------------------------------
+" Name:           Halcyon Theme
+" Author:         Tiger Nie <nhl0819@gmail.com>
+" Website:        https://github.com/tiega/halcyon.vim
+" License:        MIT
+" ----------------------------------------------------------------------------- 
+" Halcyon theme for Lightline
 if exists('g:lightline')
     let s:WORKBENCH = '#171c28'
     let s:BACKGROUND = '#1d2433'
