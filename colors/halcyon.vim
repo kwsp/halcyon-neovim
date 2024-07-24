@@ -222,7 +222,7 @@ elseif exists('*term_setansicolors')
     \ s:GREEN,
     \ s:YELLOW,
     \ s:BLUE,
-    \ s:MAGENTa,
+    \ s:MAGENTA,
     \ s:CYAN,
     \ s:WHITE,
     \ s:BLACK_br,
@@ -230,9 +230,41 @@ elseif exists('*term_setansicolors')
     \ s:GREEN,
     \ s:YELLOW,
     \ s:CYAN,
-    \ s:MAGENTa,
+    \ s:MAGENTA,
     \ s:BLUE,
     \ s:WHITE,
     \ ]
 endif
-" ====================================================
+
+" ==================================================
+" Lightline
+"" --------------------------------------------------
+if exists('g:lightline')
+    let s:p = { 'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {} }
+
+    let s:p.normal.left = [[s:BLACK, s:CYAN], [s:FOREGROUND, s:GREY]]
+    let s:p.normal.right = [[s:BLACK, s:CYAN], [s:FOREGROUND, s:GREY]]
+    let s:p.normal.middle = [[s:FOREGROUND, s:BACKGROUND]]
+    let s:p.normal.error = [[s:FOREGROUND, s:RED]]
+    let s:p.normal.warning = [[s:FOREGROUND, s:ORANGE]]
+
+    let s:p.insert.left = [[s:BLACK, s:GREEN], [s:FOREGROUND, s:DARK_GREY]]
+    let s:p.insert.right = [[s:BLACK, s:GREEN], [s:FOREGROUND, s:DARK_GREY]]
+
+    let s:p.replace.left = [[s:BLACK, s:RED], [s:FOREGROUND, s:DARK_GREY]]
+    let s:p.replace.right = [[s:BLACK, s:RED], [s:FOREGROUND, s:DARK_GREY]]
+
+    let s:p.visual.left = [[s:BLACK, s:YELLOW], [s:FOREGROUND, s:DARK_GREY]]
+    let s:p.visual.right = [[s:BLACK, s:YELLOW], [s:FOREGROUND, s:DARK_GREY]]
+
+    let s:p.inactive.left =  [[s:FOREGROUND, s:DARK_GREY], [s:FOREGROUND, s:DARK_GREY]]
+    let s:p.inactive.right = [[s:FOREGROUND, s:DARK_GREY], [s:FOREGROUND, s:DARK_GREY]]
+    let s:p.inactive.middle = [[s:FOREGROUND, s:GREY]]
+
+    let s:p.tabline.left = [[s:FOREGROUND, s:GREY]]
+    let s:p.tabline.right = [[s:BLACK, s:CYAN]]
+    let s:p.tabline.middle = [[s:FOREGROUND, s:GREY]]
+    let s:p.tabline.tabsel = [[s:BLACK, s:CYAN]]
+
+    let g:lightline#colorscheme#halcyon#palette = lightline#colorscheme#fill(s:p)
+endif
