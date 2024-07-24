@@ -5,13 +5,13 @@
 " License:        MIT
 " ----------------------------------------------------------------------------- 
 " Initialisation: {{{
+if !(has('termguicolors') && &termguicolors) && !has('gui_running') && &t_Co != 256
+  finish
+endif
+
 highlight clear
 if exists('syntax_on')
   syntax reset
-endif
-
-if !(has('termguicolors') && &termguicolors) && !has('gui_running') && &t_Co != 256
-  finish
 endif
 
 let g:colors_name = 'halcyon'
@@ -24,7 +24,7 @@ function! s:GuiFor(group, ...)
     let histring .= 'guibg=' . a:1 . ' '
   endif
 
-  if strlen(a:2)
+  if a:0 >= 2 && strlen(a:2)
     let histring .= 'guifg=' . a:2 . ' '
   endif
 
@@ -67,7 +67,7 @@ call s:GuiFor('Keyword', 'NONE', s:PURPLE)
 call s:GuiFor('Number', 'NONE', s:PURPLE)
 call s:GuiFor('Repeat', 'NONE', s:PURPLE)
 call s:GuiFor('Special', 'NONE', s:PURPLE)
-call s:GuiFor('SpecialKey', 'NONE', 'NONE')
+call s:GuiFor('SpecialKey', 'NONE', s:CYAN)
 call s:GuiFor('Statement', 'NONE', s:PURPLE, 'NONE')
 call s:GuiFor('Tag', 'NONE', s:PURPLE)
 call s:GuiFor('Type', 'NONE', s:PURPLE, 'NONE')
@@ -76,8 +76,8 @@ call s:GuiFor('Typedef', 'NONE', s:PURPLE, 'NONE')
 " --------------------------------------------------
 " Functions, classes, object literal keys, yellow
 " --------------------------------------------------
-call s:GuiFor('Directory', 'NONE', s:YELLOW)
 call s:GuiFor('Function', 'NONE', s:YELLOW)
+call s:GuiFor('Directory', 'NONE', s:YELLOW)
 call s:GuiFor('PreProc', 'NONE', s:YELLOW)
 call s:GuiFor('StorageClass', 'NONE', s:YELLOW)
 
@@ -94,6 +94,7 @@ call s:GuiFor('PreCondit', 'NONE', s:ORANGE)
 " --------------------------------------------------
 " Strings, markdown headings, green
 " --------------------------------------------------
+call s:GuiFor('String', 'NONE', s:GREEN)
 call s:GuiFor('CursorLineNR', 'NONE', s:GREEN)
 call s:GuiFor('Debug', 'NONE', s:GREEN)
 call s:GuiFor('Define', 'NONE', s:GREEN)
@@ -126,16 +127,16 @@ call s:GuiFor('Comment', 'NONE', s:LIGHT_GREY, "italic")
 call s:GuiFor('NonText', 'NONE', s:LIGHT_GREY)
 call s:GuiFor('SpecialComment', 'NONE', s:LIGHT_GREY)
 call s:GuiFor('LineNr', 'NONE', s:GREY)
-call s:GuiFor('StatusLine', 'NONE', s:FOREGROUND, 'NONE')
-call s:GuiFor('StatusLineNC', s:FOREGROUND, 'NONE')
+call s:GuiFor('StatusLine', '', '', 'reverse')
+call s:GuiFor('StatusLineNC', '', '', 'reverse')
 
 " --------------------------------------------------
 " Deletion highlights, errors, warnings, red
 " --------------------------------------------------
-call s:GuiFor('DiffDelete', 'NONE', s:RED, 'NONE')
-call s:GuiFor('DiffText', 'NONE', s:RED, 'NONE')
 call s:GuiFor('Error', 'NONE', s:RED)
 call s:GuiFor('ErrorMsg', 'NONE', s:RED)
+call s:GuiFor('DiffDelete', 'NONE', s:RED, 'NONE')
+call s:GuiFor('DiffText', 'NONE', s:RED, 'NONE')
 call s:GuiFor('GitGutterChangeREDete', 'NONE', s:RED)
 call s:GuiFor('GitGutterREDete', 'NONE', s:RED)
 call s:GuiFor('WarningMsg', 'NONE', s:RED)
@@ -151,8 +152,8 @@ call s:GuiFor('CursorLine ', 'NONE', s:CYAN, 'NONE')
 " Complex
 " --------------------------------------------------
 call s:GuiFor('Visual', s:GREY, 'NONE')
-call s:GuiFor('VertSplit', 'NONE', s:BACKGROUND, 'NONE')
-call s:GuiFor('EndOfBuffer', 'NONE', s:BACKGROUND, 'NONE')
+call s:GuiFor('VertSplit', s:GREY, s:BACKGROUND)
+call s:GuiFor('EndOfBuffer', '', '', '')
 
 call s:GuiFor('Pmenu', s:BACKGROUND, s:FOREGROUND)
 call s:GuiFor('PMenuSel', 'NONE', s:ORANGE)
@@ -188,8 +189,7 @@ call s:GuiFor('shQuote', 'NONE', s:GREEN)
 call s:GuiFor('jsVariableDef', 'NONE', s:CYAN)
 call s:GuiFor('jsGlobalObjects', 'NONE', s:CYAN)
 call s:GuiFor('jsStorageClass', 'NONE', s:PURPLE)
-call s:GuiFor('jsTemplateString', 'NONE', s:GREEN)
-call s:GuiFor('jsString', 'NONE', s:GREEN)
+call s:GuiFor('jsTemplateExpression', 'NONE', s:PURPLE)
 call s:GuiFor('jsForAwait', 'NONE', s:ORANGE)
 call s:GuiFor('jsDot', 'NONE', s:ORANGE)
 
@@ -272,9 +272,9 @@ call s:GuiFor('htmlEvent', 'NONE', s:ORANGE)
 " Python 'vim-python/python-syntax'
 " --------------------------------------------------
 
-call s:GuiFor('pythonString', 'NONE', s:GREEN)
-call s:GuiFor('pythonFString', 'NONE', s:GREEN)
-call s:GuiFor('pythonRawString', 'NONE', s:GREEN)
+"call s:GuiFor('pythonString', 'NONE', s:GREEN)
+"call s:GuiFor('pythonFString', 'NONE', s:GREEN)
+"call s:GuiFor('pythonRawString', 'NONE', s:GREEN)
 
 " --------------------------------------------------
 " C
@@ -310,8 +310,14 @@ call s:GuiFor('mkdCodeStart', 'NONE', s:CYAN)
 call s:GuiFor('mkdCodeEnd', 'NONE', s:CYAN)
 call s:GuiFor('mkdLink', 'NONE', s:YELLOW)
 call s:GuiFor('mkdURL', 'NONE', s:PURPLE)
-
 call s:GuiFor('markdownLinkText', 'NONE', s:YELLOW)
+
+" --------------------------------------------------
+" coc.nvim
+" --------------------------------------------------
+
+call s:GuiFor('CocFloating', s:GREY)
+
 
 " ==================================================
 " Built-in Terminal
@@ -360,37 +366,4 @@ elseif exists('*term_setansicolors')
     \ s:BLUE,
     \ s:WHITE,
     \ ]
-endif
-
-" ==================================================
-" Lightline
-"" --------------------------------------------------
-if exists('g:lightline')
-    let s:p = { 'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {} }
-
-    let s:p.normal.left = [[s:BLACK, s:CYAN], [s:FOREGROUND, s:GREY]]
-    let s:p.normal.right = [[s:BLACK, s:CYAN], [s:FOREGROUND, s:GREY]]
-    let s:p.normal.middle = [[s:FOREGROUND, s:BACKGROUND]]
-    let s:p.normal.error = [[s:FOREGROUND, s:RED]]
-    let s:p.normal.warning = [[s:FOREGROUND, s:ORANGE]]
-
-    let s:p.insert.left = [[s:BLACK, s:GREEN], [s:FOREGROUND, s:DARK_GREY]]
-    let s:p.insert.right = [[s:BLACK, s:GREEN], [s:FOREGROUND, s:DARK_GREY]]
-
-    let s:p.replace.left = [[s:BLACK, s:RED], [s:FOREGROUND, s:DARK_GREY]]
-    let s:p.replace.right = [[s:BLACK, s:RED], [s:FOREGROUND, s:DARK_GREY]]
-
-    let s:p.visual.left = [[s:BLACK, s:YELLOW], [s:FOREGROUND, s:DARK_GREY]]
-    let s:p.visual.right = [[s:BLACK, s:YELLOW], [s:FOREGROUND, s:DARK_GREY]]
-
-    let s:p.inactive.left =  [[s:FOREGROUND, s:DARK_GREY], [s:FOREGROUND, s:DARK_GREY]]
-    let s:p.inactive.right = [[s:FOREGROUND, s:DARK_GREY], [s:FOREGROUND, s:DARK_GREY]]
-    let s:p.inactive.middle = [[s:FOREGROUND, s:GREY]]
-
-    let s:p.tabline.left = [[s:FOREGROUND, s:GREY]]
-    let s:p.tabline.right = [[s:BLACK, s:CYAN]]
-    let s:p.tabline.middle = [[s:FOREGROUND, s:GREY]]
-    let s:p.tabline.tabsel = [[s:BLACK, s:CYAN]]
-
-    let g:lightline#colorscheme#halcyon#palette = lightline#colorscheme#fill(s:p)
 endif
