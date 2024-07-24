@@ -6,7 +6,7 @@ A minimal, dark blue theme for Neovim and [lightline.vim](https://github.com/itc
 
 ## Language Support 
 
-Languages I've tweaked this theme with: C, JavaScript, Golang, Python, Common Lisp, HTML, CSS, Scss, Markdown, YAML and Bash. In particular, JavaScript support requires `Plug 'pangloss/vim-javascript'`, Python support requires `Plug 'vim-python/python-syntax'`, HTML and Markdown support requires `Plug 'plasticboy/vim-markdown'` and Golang support requires `Plug 'fatih/vim-go'`. If you find a better syntax plugin for a particular language, feel free to ping me or send a PR.
+Languages I've tweaked this theme with: C, JavaScript, TypeScript, Golang, Python, Common Lisp, HTML, CSS, Scss, Markdown, YAML and Bash. In particular, JavaScript support requires `Plug 'pangloss/vim-javascript'`, Python support requires `Plug 'vim-python/python-syntax'`, HTML and Markdown support requires `Plug 'plasticboy/vim-markdown'` and Golang support requires `Plug 'fatih/vim-go'`. If you find a better syntax plugin for a particular language, feel free to ping me or send a PR.
 
 ## Installation
 
